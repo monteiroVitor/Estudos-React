@@ -3,7 +3,7 @@ import { ProductItem } from "./ProductItem";
 
 interface SearchResultsProps {
   results: Array<{ id: number; price: number; title: string }>;
-  totalPrice: number;
+  totalPrice: string;
 }
 
 export function SearchResults({ results, totalPrice }: SearchResultsProps) {
@@ -20,12 +20,12 @@ export function SearchResults({ results, totalPrice }: SearchResultsProps) {
   // }, []);
 
   return (
-    <div>
-      <p>{totalPrice}</p>
+    <>
       {results?.map((product) => (
         <ProductItem key={product.id} product={product} />
       ))}
-    </div>
+      <p>{totalPrice}</p>
+    </>
   );
 }
 

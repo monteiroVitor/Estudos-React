@@ -1,5 +1,7 @@
 import { memo } from "react";
 
+import styles from "../styles/components/ProductItem.module.scss";
+
 interface ProductItemProps {
   product: {
     id: number;
@@ -10,9 +12,15 @@ interface ProductItemProps {
 
 function ProductItemComponent({ product }: ProductItemProps) {
   return (
-    <div>
-      {product.title} <strong>{product.price}</strong>
-    </div>
+    <article className={styles.container}>
+      <div className={styles.itemContainer}>
+        <p>
+          <strong>{product.title}</strong>
+          {product.price}
+        </p>
+        <button type="button">opções</button>
+      </div>
+    </article>
   );
 }
 
