@@ -24,16 +24,10 @@
   }
 
   button {
-    padding: 0.5rem;
     border: 0;
-
-    color: var(--white);
+    height: 1.8rem;
+    color: var(--pink-500);
     background: var(--gray-850);
-
-    transition: filter 0.2s;
-
-    &:hover {
-      filter: brightness(0.9);
-    }
+    font-size: 1.2rem;
   }
 }
