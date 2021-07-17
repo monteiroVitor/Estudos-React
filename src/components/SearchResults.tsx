@@ -1,12 +1,12 @@
-import { useMemo, useCallback } from "react";
+import { useCallback } from "react";
+import { List } from "react-virtualized";
 import { ProductItem } from "./ProductItem";
 
 interface SearchResultsProps {
   results: Array<{ id: number; price: number; title: string }>;
-  totalPrice: string;
 }
 
-export function SearchResults({ results, totalPrice }: SearchResultsProps) {
+export function SearchResults({ results }: SearchResultsProps) {
   //* Exemplo useMemo
   // const totalPrice = useMemo(() => {
   //   return results.reduce((acc, product) => {
@@ -15,16 +15,31 @@ export function SearchResults({ results, totalPrice }: SearchResultsProps) {
   // }, [results]);
 
   //* Exemplo useCallback
-  // const handleClick = useCallback(async () => {
-  //   console.log();
-  // }, []);
+  const handleClick = useCallback(async (id: number) => {
+    console.log(id);
+  }, []);
+
+  function rowRenderer({ key, index, style }) {
+    return (
+      <div key={key} style={style}>
+        <ProductItem
+          product={results[index]}
+          handleClick={() => handleClick(results[index].id)}
+        />
+      </div>
+    );
+  }
 
   return (
     <>
-      {results?.map((product) => (
-        <ProductItem key={product.id} product={product} />
-      ))}
-      <p>{totalPrice}</p>
+      <List
+        height={400}
+        rowHeight={100}
+        rowCount={results.length}
+        rowRenderer={rowRenderer}
+        overscanRowCount={4}
+        width={496}
+      />
     </>
   );
 }

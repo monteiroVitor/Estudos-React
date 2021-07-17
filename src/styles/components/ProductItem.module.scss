@@ -1,8 +1,11 @@
 .container {
   padding: 1rem;
-  margin: 1rem 0;
   background: var(--gray-850);
   border-radius: 5px;
+
+  & + .container {
+    margin-top: 1rem;
+  }
 }
 
 .itemContainer {

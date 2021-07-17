@@ -1,9 +1,16 @@
 .optionsContainer {
-  border-top: 2px solid var(--gray-700);
-  margin-top: 0.8rem;
+  font-size: 0.9rem;
 
-  p {
-    margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: 5px;
     font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
   }
 }

@@ -1,8 +1,9 @@
 import { memo, useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { ProductOptionsProps } from "./ProductOptions";
 import dynamic from "next/dynamic";
 
-const ProductOptions = dynamic(() => {
+const ProductOptions = dynamic<ProductOptionsProps>(() => {
   return import("./ProductOptions").then((mod) => mod.ProductOptions);
 });
 
@@ -14,9 +15,10 @@ interface ProductItemProps {
     price: number;
     title: string;
   };
+  handleClick: () => void;
 }
 
-function ProductItemComponent({ product }: ProductItemProps) {
+function ProductItemComponent({ product, handleClick }: ProductItemProps) {
   const [showOptions, setShowOptions] = useState(false);
 
   return (
@@ -26,11 +28,11 @@ function ProductItemComponent({ product }: ProductItemProps) {
           <strong>{product.title}</strong>
           {product.price}
         </p>
+        {showOptions && <ProductOptions handleClick={handleClick} />}
         <button type="button" onClick={() => setShowOptions(!showOptions)}>
           {showOptions ? <AiOutlineMinus /> : <AiOutlinePlus />}
         </button>
       </div>
-      {showOptions && <ProductOptions />}
     </article>
   );
 }
@@ -60,4 +62,9 @@ export const ProductItem = memo(
  *    loading: () =><span>Loading...</span>
  *  }
  * Link explicando um pouco melhor (só um pouco): https://pt-br.reactjs.org/docs/code-splitting.html
+ ** Virtualização
+ * 1. Carregar todos os itens da busca ao mesmo tempo (se não faço paginação), pode ser custoso.
+ * 2. Fiz um exemplo simples que junta os dois conceitos Dynamic Import para realizar o import das opções
+ * somente quando necessário, virtualizar a lista e o uso de useCallback.
+ * Obs: usando react-virtualized
  */

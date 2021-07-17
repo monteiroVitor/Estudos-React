@@ -63,12 +63,12 @@ export default function Home() {
           <button type="submit">Buscar</button>
         </form>
 
-        <section className={styles.resultsContainer}>
-          <SearchResults
-            results={results.products}
-            totalPrice={results.totalPrice}
-          />
-        </section>
+        {results.totalPrice && (
+          <section className={styles.resultsContainer}>
+            <SearchResults results={results.products} />
+            <p>{results.totalPrice}</p>
+          </section>
+        )}
       </main>
     </div>
   );

@@ -1,12 +1,19 @@
 import styles from "../styles/components/ProductOptions.module.scss";
 
-export function ProductOptions() {
+export interface ProductOptionsProps {
+  handleClick: () => void;
+}
+
+export function ProductOptions({ handleClick }: ProductOptionsProps) {
   return (
     <div className={styles.optionsContainer}>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
-        mollitia!
-      </p>
+      <p>Favoritar ?</p>
+      <button type="button" onClick={handleClick}>
+        Sim
+      </button>
+      <button type="button" disabled>
+        Não
+      </button>
     </div>
   );
 }
