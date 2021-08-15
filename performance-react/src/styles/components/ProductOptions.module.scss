@@ -1,0 +1,16 @@
+.optionsContainer {
+  font-size: 0.9rem;
+
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: 5px;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,36 @@
+.container {
+  padding: 1rem;
+  background: var(--gray-850);
+  border-radius: 5px;
+
+  & + .container {
+    margin-top: 1rem;
+  }
+}
+
+.itemContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 1rem;
+
+    strong {
+      margin-bottom: 5px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+  }
+
+  button {
+    border: 0;
+    height: 1.8rem;
+    color: var(--pink-500);
+    background: var(--gray-850);
+    font-size: 1.2rem;
+  }
+}
